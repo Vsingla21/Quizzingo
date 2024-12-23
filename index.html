@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quizzingo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1>Quizzingo</h1>
+    </div>
+  
+    <div class="main-container">
+      <!-- Timer will appear here when a box is clicked -->
+      <div class="timer-container" id="timer-container">
+        <div id="timer" class="timer">00:00</div>
+      </div>
+  
+      <div class="board" id="board">
+        <!-- Generate the 5x5 boxes dynamically -->
+        <div class="box" id="box-1" onclick="startTimerForBox(1)">1</div>
+        <div class="box" id="box-2" onclick="startTimerForBox(2)">2</div>
+        <div class="box" id="box-3" onclick="startTimerForBox(3)">3</div>
+        <div class="box" id="box-4" onclick="startTimerForBox(4)">4</div>
+        <div class="box" id="box-5" onclick="startTimerForBox(5)">5</div>
+        <div class="box" id="box-6" onclick="startTimerForBox(6)">6</div>
+        <div class="box" id="box-7" onclick="startTimerForBox(7)">7</div>
+        <div class="box" id="box-8" onclick="startTimerForBox(8)">8</div>
+        <div class="box" id="box-9" onclick="startTimerForBox(9)">9</div>
+        <div class="box" id="box-10" onclick="startTimerForBox(10)">10</div>
+        <div class="box" id="box-11" onclick="startTimerForBox(11)">11</div>
+        <div class="box" id="box-12" onclick="startTimerForBox(12)">12</div>
+        <div class="box" id="box-13" onclick="startTimerForBox(13)">13</div>
+        <div class="box" id="box-14" onclick="startTimerForBox(14)">14</div>
+        <div class="box" id="box-15" onclick="startTimerForBox(15)">15</div>
+        <div class="box" id="box-16" onclick="startTimerForBox(16)">16</div>
+        <div class="box" id="box-17" onclick="startTimerForBox(17)">17</div>
+        <div class="box" id="box-18" onclick="startTimerForBox(18)">18</div>
+        <div class="box" id="box-19" onclick="startTimerForBox(19)">19</div>
+        <div class="box" id="box-20" onclick="startTimerForBox(20)">20</div>
+        <div class="box" id="box-21" onclick="startTimerForBox(21)">21</div>
+        <div class="box" id="box-22" onclick="startTimerForBox(22)">22</div>
+        <div class="box" id="box-23" onclick="startTimerForBox(23)">23</div>
+        <div class="box" id="box-24" onclick="startTimerForBox(24)">24</div>
+        <div class="box" id="box-25" onclick="startTimerForBox(25)">25</div>
+      </div>
+  
+
+      <div id="question-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" id="close-modal">&times;</span>
+          <h3 id="question-text"></h3>
+          <p id="question-description"></p>
+          <input type="text" id="player-answer" placeholder="Your answer" />
+          <button id="submit-answer" onclick="submitAnswer()">Submit Answer</button>
+        </div>
+      </div>
+
+      <!-- Scoreboard on the right side -->
+      <div class="scoreboard-container">
+        <div class="scoreboard">
+          <div style="color: rgb(224, 134, 134);">Player A: <span id="player-a-score" style="color: black;">0</span></div>
+          <div style="color: rgb(224, 134, 134);">Player B: <span id="player-b-score" style="color: black;">0</span></div>
+        </div>
+      </div>
+    </div>
+  
+    <script src="script.js"></script>
+  </body>
+  
+  
+</html>

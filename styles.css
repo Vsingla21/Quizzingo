@@ -1,0 +1,222 @@
+/* General Styles */
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column; /* Stack the header and main content */
+    align-items: center;
+    background-color: #f4f4f4;
+    overflow: hidden; /* Prevent scrolling */
+  }
+  
+  .header {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 50px; /* Heading size */
+    margin-top: 20px;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  .main-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-left: 50px;
+    height: calc(100vh - 100px);
+  }
+  
+  .timer-container {
+    width: 100px;
+    margin-top: 5px;
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-right: 20px;
+    visibility: hidden; 
+  }
+  
+  .timer {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(224, 134, 134);
+    padding: 10px 20px;
+    border: 2px solid gray;
+  }
+  
+  .board {
+    display: grid;
+    grid-template-columns: repeat(5, 80px); /* 5 columns */
+    grid-template-rows: repeat(5, 80px); /* 5 rows */
+    gap: 8px;
+    justify-items: center;
+    align-items: center;
+    width: 50%;
+    height: 50%;
+  }
+  
+  .box {
+    width: 70px;
+    height: 70px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border: 2px solid #000;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .box:hover {
+    background-color: #ddd;
+  }
+  
+  .claimed {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .player-a {
+    background-color: #2196f3;
+  }
+  
+  .player-b {
+    background-color: #f44336;
+  }
+  
+  .blackhole {
+    background-color: #000;
+    color: white;
+  }
+  
+  .timer-box {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: white;
+  }
+  
+  .scoreboard-container {
+    margin-left: -175px; /* Space between the board and scoreboard */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 5px;
+  }
+  
+  .scoreboard {
+    padding: 20px;
+    border: 2px solid gray;
+    /* border-radius: 10px; */
+    font-size: 18px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scoreboard div {
+    margin-bottom: 10px;
+  }
+  
+  .scoreboard span {
+    font-weight: bold;
+  }
+  
+  /* Add glowing effect to boxes with fluorescent colors */
+.box {
+    width: 70px;
+    height: 70px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    border: 2px solid #000;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .box:hover {
+    background-color: #ddd;
+  }
+  
+  .box[style*="background-color: pink"] {
+    box-shadow: 0 0 15px 5px rgba(255, 105, 180, 0.8); /* Fluorescent pink glow */
+  }
+  
+  .box[style*="background-color: blue"] {
+    box-shadow: 0 0 15px 5px rgba(30, 144, 255, 0.8); /* Fluorescent blue glow */
+  }
+  
+  .box[style*="background-color: green"] {
+    box-shadow: 0 0 15px 5px rgba(34, 139, 34, 0.8); /* Fluorescent green glow */
+  }
+  
+
+
+  /* Question Modal */
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: auto;
+  }
+  
+  .modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+  }
+  
+  #close-modal {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  #close-modal:hover,
+  #close-modal:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
