@@ -7,41 +7,68 @@ const boxTimes = {
     21: 40, 22: 30, 23: 30, 24: 30, 25: 40
   };
   
-  // Sample questions and answers with descriptions
-  const questions = {
-    1: {
-      question: "What is the capital of France?",
-      description: "This city is known for its iconic Eiffel Tower and is often referred to as the city of love.",
-      correctAnswer: "Paris"
-    },
-    2: {
-      question: "What is the largest ocean on Earth?",
-      description: "This ocean spans more than 63 million square miles and covers about 30% of the Earth's surface.",
-      correctAnswer: "Pacific Ocean"
-    },
-    3: {
-      question: "What is the chemical symbol for water?",
-      description: "This compound consists of two hydrogen atoms bonded to a single oxygen atom.",
-      correctAnswer: "H2O"
-    },
-    4: {
-      question: "What is the tallest mountain in the world?",
-      description: "This peak is located in the Himalayas and stands at 29,032 feet above sea level.",
-      correctAnswer: "Mount Everest"
-    },
-    5: {
-      question: "What is the largest planet in our solar system?",
-      description: "This planet is a gas giant and is known for its Great Red Spot and many moons.",
-      correctAnswer: "Jupiter"
-    }
-  };
-  
-  // Initialize the game
-  document.addEventListener('DOMContentLoaded', () => {
-    setupGame();
+// API URL for trivia questions (Open Trivia Database)
+const apiUrl = 'https://opentdb.com/api.php?amount=5&type=multiple';
+
+// Initialize the game
+document.addEventListener('DOMContentLoaded', () => {
+  setupGame();
+  fetchTriviaQuestions();
+});
+
+// Function to fetch trivia questions from the API
+async function fetchTriviaQuestions() {
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    // Assuming 'data.results' contains the trivia questions and answers
+    const questions = data.results.map((question, index) => ({
+      question: question.question,
+      description: `Category: ${question.category}`,
+      correctAnswer: question.correct_answer,
+      options: [...question.incorrect_answers, question.correct_answer].sort(() => Math.random() - 0.5) // Shuffle options
+    }));
+
+    console.log(questions); // Log the fetched questions for debugging
+
+    // Create boxes with trivia questions dynamically
     const boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => box.addEventListener('click', () => onBoxClick(parseInt(box.id.split('-')[1]))));
-  });
+    boxes.forEach((box, index) => {
+      if (questions[index]) {
+        box.setAttribute('data-question', questions[index].question);
+        box.setAttribute('data-correct-answer', questions[index].correctAnswer);
+        box.setAttribute('data-options', JSON.stringify(questions[index].options));
+      }
+    });
+
+    // Add event listeners to boxes for game interaction
+    boxes.forEach(box => box.addEventListener('click', () => onBoxClick(box)));
+
+  } catch (error) {
+    console.error('Error fetching trivia questions:', error);
+  }
+}
+
+// Function to handle box click and game interaction
+function onBoxClick(box) {
+  const question = box.getAttribute('data-question');
+  const correctAnswer = box.getAttribute('data-correct-answer');
+  const options = JSON.parse(box.getAttribute('data-options'));
+
+  // Display question and options to the user
+  const userAnswer = prompt(`${question}\nOptions: ${options.join(', ')}`);
+
+  // Check if the answer is correct
+  if (userAnswer && userAnswer.trim().toLowerCase() === correctAnswer.toLowerCase()) {
+    alert('Correct!');
+    // Mark the box as claimed or handle the box logic
+    box.classList.add('claimed');
+  } else {
+    alert(`Incorrect! The correct answer was: ${correctAnswer}`);
+  }
+}
+
   
   // Function to set up the game board (add colors and setup event listeners)
   function setupGame() {
